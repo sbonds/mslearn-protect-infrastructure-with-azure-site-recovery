@@ -9,6 +9,9 @@ param publicIPAddresses_patient_records_ip_name string = 'patient-records-ip'
 param networkSecurityGroups_patient_records_nsg_name string = 'patient-records-nsg'
 param storageAccounts_asrcache_name string
 param primaryLocation string = 'westus2'
+// Security? Who needs that?
+param adminUsername string = 'learn-admin'
+param adminPassword string = 'Pa55w0rd!Paasw0rd'
 
 resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/networkSecurityGroups@2019-04-01' = {
   name: networkSecurityGroups_hr_records_nsg_name
@@ -395,7 +398,6 @@ resource publicIPAddresses_hr_records_ip_name_resource 'Microsoft.Network/public
   location: primaryLocation
   sku: {
     name: 'Basic'
-    tier: 'Regional'
   }
   properties: {
     provisioningState: 'Succeeded'
@@ -413,7 +415,6 @@ resource publicIPAddresses_patient_records_ip_name_resource 'Microsoft.Network/p
   location: primaryLocation
   sku: {
     name: 'Basic'
-    tier: 'Regional'
   }
   properties: {
     provisioningState: 'Succeeded'
@@ -459,7 +460,6 @@ resource storageAccounts_asrcache_name_resource 'Microsoft.Storage/storageAccoun
   location: primaryLocation
   sku: {
     name: 'Standard_LRS'
-    tier: 'Standard'
   }
   kind: 'Storage'
   properties: {
@@ -512,8 +512,8 @@ resource virtualMachines_hr_records_name_resource 'Microsoft.Compute/virtualMach
     }
     osProfile: {
       computerName: virtualMachines_hr_records_name
-      adminUsername: 'learn-admin'
-      adminPassword: 'Pa55w0rdPa55w0rd'
+      adminUsername: adminUsername
+      adminPassword: adminPassword
       windowsConfiguration: {
         enableAutomaticUpdates: true
         provisionVMAgent: true
@@ -559,8 +559,8 @@ resource virtualMachines_patient_records_name_resource 'Microsoft.Compute/virtua
     }
     osProfile: {
       computerName: virtualMachines_patient_records_name
-      adminUsername: 'learn-admin'
-      adminPassword: 'Pa55w0rdPa55w0rd'
+      adminUsername: adminUsername
+      adminPassword: adminPassword
       windowsConfiguration: {
         enableAutomaticUpdates: true
         provisionVMAgent: true
