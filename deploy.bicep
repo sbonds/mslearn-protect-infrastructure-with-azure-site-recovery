@@ -7,9 +7,10 @@ param networkInterfaces_patient_records71_name string = 'patient-records71'
 param networkSecurityGroups_hr_records_nsg_name string = 'hr-records-nsg'
 param publicIPAddresses_patient_records_ip_name string = 'patient-records-ip'
 param networkSecurityGroups_patient_records_nsg_name string = 'patient-records-nsg'
-param storageAccounts_asrcache_name string
+param storageAccounts_asrcache_name string = 'asrcache-${uniqueString(resourceGroup().id)}'
 param primaryLocation string = 'westus2'
-// Security? Who needs that?
+// Security? Who needs that? A more secure and higher-effort approach would be to create a key vault and autogenerate
+// a password, then put the password in the key vault.
 param adminUsername string = 'learn-admin'
 param adminPassword string = 'Pa55w0rd!Paasw0rd'
 
