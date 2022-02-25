@@ -77,12 +77,10 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
   name: networkSecurityGroups_patient_records_nsg_name
   location: primaryLocation
   properties: {
-    provisioningState: 'Succeeded'
     securityRules: [
       {
         name: 'HTTP'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '80'
@@ -99,9 +97,7 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
       }
       {
         name: 'HTTPS'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '443'
@@ -118,9 +114,7 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
       }
       {
         name: 'SSH'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '22'
@@ -129,128 +123,6 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
           access: 'Allow'
           priority: 340
           direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-    ]
-    defaultSecurityRules: [
-      {
-        name: 'AllowVnetInBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow inbound traffic from all VMs in VNET'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'VirtualNetwork'
-          destinationAddressPrefix: 'VirtualNetwork'
-          access: 'Allow'
-          priority: 65000
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowAzureLoadBalancerInBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow inbound traffic from azure load balancer'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'AzureLoadBalancer'
-          destinationAddressPrefix: '*'
-          access: 'Allow'
-          priority: 65001
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'DenyAllInBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Deny all inbound traffic'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 65500
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowVnetOutBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow outbound traffic from all VMs to all VMs in VNET'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'VirtualNetwork'
-          destinationAddressPrefix: 'VirtualNetwork'
-          access: 'Allow'
-          priority: 65000
-          direction: 'Outbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowInternetOutBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow outbound traffic from all VMs to Internet'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: 'Internet'
-          access: 'Allow'
-          priority: 65001
-          direction: 'Outbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'DenyAllOutBound'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Deny all outbound traffic'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 65500
-          direction: 'Outbound'
           sourcePortRanges: []
           destinationPortRanges: []
           sourceAddressPrefixes: []
@@ -268,9 +140,6 @@ resource publicIPAddresses_hr_records_ip_name_resource 'Microsoft.Network/public
     name: 'Basic'
   }
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: 'a1ae6b4b-6e63-41d0-9992-7930b81dbf2b'
-    ipAddress: '52.247.215.197'
     publicIPAddressVersion: 'IPv4'
     publicIPAllocationMethod: 'Dynamic'
     idleTimeoutInMinutes: 4
@@ -285,9 +154,6 @@ resource publicIPAddresses_patient_records_ip_name_resource 'Microsoft.Network/p
     name: 'Basic'
   }
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: '0e31ceae-269c-48bd-bcd2-0b8062068fda'
-    ipAddress: '13.77.170.75'
     publicIPAddressVersion: 'IPv4'
     publicIPAllocationMethod: 'Dynamic'
     idleTimeoutInMinutes: 4
@@ -299,8 +165,6 @@ resource virtualNetworks_asr_vnet_name_resource 'Microsoft.Network/virtualNetwor
   name: virtualNetworks_asr_vnet_name
   location: primaryLocation
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: '9bbe40d0-a95d-4acf-a004-38e4e80f02a6'
     addressSpace: {
       addressPrefixes: [
         '10.1.1.0/24'
@@ -309,9 +173,7 @@ resource virtualNetworks_asr_vnet_name_resource 'Microsoft.Network/virtualNetwor
     subnets: [
       {
         name: 'default'
-        etag: 'W/"cf7d98bb-e87b-4612-a488-eaa048508de5"'
         properties: {
-          provisioningState: 'Succeeded'
           addressPrefix: '10.1.1.0/24'
           delegations: []
         }
@@ -450,7 +312,6 @@ resource networkSecurityGroups_hr_records_nsg_name_HTTP 'Microsoft.Network/netwo
   parent: networkSecurityGroups_hr_records_nsg_name_resource
   name: 'HTTP'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '80'
@@ -470,7 +331,6 @@ resource networkSecurityGroups_patient_records_nsg_name_HTTP 'Microsoft.Network/
   parent: networkSecurityGroups_patient_records_nsg_name_resource
   name: 'HTTP'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '80'
@@ -490,7 +350,6 @@ resource networkSecurityGroups_hr_records_nsg_name_HTTPS 'Microsoft.Network/netw
   parent: networkSecurityGroups_hr_records_nsg_name_resource
   name: 'HTTPS'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '443'
@@ -510,7 +369,6 @@ resource networkSecurityGroups_patient_records_nsg_name_HTTPS 'Microsoft.Network
   parent: networkSecurityGroups_patient_records_nsg_name_resource
   name: 'HTTPS'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '443'
@@ -530,7 +388,6 @@ resource networkSecurityGroups_hr_records_nsg_name_SSH 'Microsoft.Network/networ
   parent: networkSecurityGroups_hr_records_nsg_name_resource
   name: 'SSH'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '22'
@@ -550,7 +407,6 @@ resource networkSecurityGroups_patient_records_nsg_name_SSH 'Microsoft.Network/n
   parent: networkSecurityGroups_patient_records_nsg_name_resource
   name: 'SSH'
   properties: {
-    provisioningState: 'Succeeded'
     protocol: 'Tcp'
     sourcePortRange: '*'
     destinationPortRange: '22'
@@ -570,7 +426,6 @@ resource virtualNetworks_asr_vnet_name_default 'Microsoft.Network/virtualNetwork
   parent: virtualNetworks_asr_vnet_name_resource
   name: 'default'
   properties: {
-    provisioningState: 'Succeeded'
     addressPrefix: '10.1.1.0/24'
     delegations: []
   }
@@ -593,15 +448,10 @@ resource networkInterfaces_hr_records71_name_resource 'Microsoft.Network/network
   name: networkInterfaces_hr_records71_name
   location: primaryLocation
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: 'd69b2e18-3038-4e3a-adcc-2721ff16bb01'
     ipConfigurations: [
       {
         name: 'ipconfig1'
-        etag: 'W/"bf591fe9-ca20-486f-b57d-afb6153a3849"'
         properties: {
-          provisioningState: 'Succeeded'
-          privateIPAddress: '10.1.1.4'
           privateIPAllocationMethod: 'Dynamic'
           publicIPAddress: {
             id: publicIPAddresses_hr_records_ip_name_resource.id
@@ -617,9 +467,8 @@ resource networkInterfaces_hr_records71_name_resource 'Microsoft.Network/network
     dnsSettings: {
       dnsServers: []
       appliedDnsServers: []
-      internalDomainNameSuffix: '0bal3g03vhhuviaehdsoqdycug.xx.internal.cloudapp.net'
+      internalDomainNameSuffix: 'mslearn-asr-usw2.internal.cloudapp.net'
     }
-    macAddress: '00-0D-3A-01-6E-11'
     enableAcceleratedNetworking: false
     enableIPForwarding: false
     networkSecurityGroup: {
@@ -634,15 +483,10 @@ resource networkInterfaces_patient_records71_name_resource 'Microsoft.Network/ne
   name: networkInterfaces_patient_records71_name
   location: primaryLocation
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: '6b93712e-d8bc-46ad-8c22-eb9c8b24f6a5'
     ipConfigurations: [
       {
         name: 'ipconfig1'
-        etag: 'W/"e70770af-07a1-42b3-add7-9b8580a93054"'
         properties: {
-          provisioningState: 'Succeeded'
-          privateIPAddress: '10.1.1.4'
           privateIPAllocationMethod: 'Dynamic'
           publicIPAddress: {
             id: publicIPAddresses_patient_records_ip_name_resource.id
@@ -658,9 +502,8 @@ resource networkInterfaces_patient_records71_name_resource 'Microsoft.Network/ne
     dnsSettings: {
       dnsServers: []
       appliedDnsServers: []
-      internalDomainNameSuffix: 'yib3cublv2ou1aesmclt0hr4de.xx.internal.cloudapp.net'
+      internalDomainNameSuffix: 'mslearn-asr-usw2.internal.cloudapp.net'
     }
-    macAddress: '00-0D-3A-F9-FC-D9'
     enableAcceleratedNetworking: false
     enableIPForwarding: false
     networkSecurityGroup: {
