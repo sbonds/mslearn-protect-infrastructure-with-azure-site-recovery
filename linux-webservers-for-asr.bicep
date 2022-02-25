@@ -14,6 +14,7 @@ param publicIP_webserver02_name string = 'webserver02-ip'
 param vnet_name string = 'webserver-vnet-primary'
 param nsg_name string = 'vnet-primary-default-nsg'
 param storageAccounts_asrcache_name string = 'asrcache${uniqueString(resourceGroup().id)}'
+param storageAccounts_diag_name string = 'diags${uniqueString(resourceGroup().id)}'
 param primaryLocation string = resourceGroup().location
 // Security? Who needs that? A more secure and higher-effort approach would be to create a key vault and autogenerate
 // a password, then put the password in the key vault.
@@ -163,12 +164,47 @@ resource storageAccounts_asrcache_name_resource 'Microsoft.Storage/storageAccoun
   }
 }
 
+resource storageAccounts_diag_name_resource 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+  name: storageAccounts_diag_name
+  location: primaryLocation
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  properties: {
+    networkAcls: {
+      bypass: 'AzureServices'
+      virtualNetworkRules: []
+      ipRules: []
+      defaultAction: 'Allow'
+    }
+    supportsHttpsTrafficOnly: true
+    encryption: {
+      services: {
+        file: {
+          enabled: true
+        }
+        blob: {
+          enabled: true
+        }
+      }
+      keySource: 'Microsoft.Storage'
+    }
+  }
+}
+
 resource webserver01_name_resource 'Microsoft.Compute/virtualMachines@2019-03-01' = {
   name: webserver01_name
   location: primaryLocation
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_B1s'
+    }
+    diagnosticsProfile: {
+      bootDiagnostics: {
+        enabled: true
+        storageUri: storageAccounts_diag_name_resource.properties.primaryEndpoints.blob
+      }
     }
     storageProfile: {
       imageReference: {
@@ -213,6 +249,12 @@ resource webserver02_name_resource 'Microsoft.Compute/virtualMachines@2019-03-01
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_B1s'
+    }
+    diagnosticsProfile: {
+      bootDiagnostics: {
+        enabled: true
+        storageUri: storageAccounts_diag_name_resource.properties.primaryEndpoints.blob
+      }
     }
     storageProfile: {
       imageReference: {
@@ -265,6 +307,19 @@ resource subnet_name_default 'Microsoft.Network/virtualNetworks/subnets@2019-04-
 
 resource storageAccounts_asrcache_name_default 'Microsoft.Storage/storageAccounts/blobServices@2019-04-01' = {
   parent: storageAccounts_asrcache_name_resource
+  name: 'default'
+  properties: {
+    cors: {
+      corsRules: []
+    }
+    deleteRetentionPolicy: {
+      enabled: false
+    }
+  }
+}
+
+resource storageAccounts_diag_name_default 'Microsoft.Storage/storageAccounts/blobServices@2019-04-01' = {
+  parent: storageAccounts_diag_name_resource
   name: 'default'
   properties: {
     cors: {
