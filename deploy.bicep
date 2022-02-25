@@ -8,10 +8,11 @@ param networkSecurityGroups_hr_records_nsg_name string = 'hr-records-nsg'
 param publicIPAddresses_patient_records_ip_name string = 'patient-records-ip'
 param networkSecurityGroups_patient_records_nsg_name string = 'patient-records-nsg'
 param storageAccounts_asrcache_name string
+param primaryLocation string = 'westus2'
 
 resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/networkSecurityGroups@2019-04-01' = {
   name: networkSecurityGroups_hr_records_nsg_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
     resourceGuid: 'b3239779-e967-4d87-88f1-65b4e6bfa6ba'
@@ -201,7 +202,7 @@ resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/n
 
 resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Network/networkSecurityGroups@2019-04-01' = {
   name: networkSecurityGroups_patient_records_nsg_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
     resourceGuid: 'b0223784-0386-4ac2-a236-fbc491eb9d53'
@@ -391,7 +392,7 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
 
 resource publicIPAddresses_hr_records_ip_name_resource 'Microsoft.Network/publicIPAddresses@2019-04-01' = {
   name: publicIPAddresses_hr_records_ip_name
-  location: 'westus2'
+  location: primaryLocation
   sku: {
     name: 'Basic'
     tier: 'Regional'
@@ -409,7 +410,7 @@ resource publicIPAddresses_hr_records_ip_name_resource 'Microsoft.Network/public
 
 resource publicIPAddresses_patient_records_ip_name_resource 'Microsoft.Network/publicIPAddresses@2019-04-01' = {
   name: publicIPAddresses_patient_records_ip_name
-  location: 'westus2'
+  location: primaryLocation
   sku: {
     name: 'Basic'
     tier: 'Regional'
@@ -427,7 +428,7 @@ resource publicIPAddresses_patient_records_ip_name_resource 'Microsoft.Network/p
 
 resource virtualNetworks_asr_vnet_name_resource 'Microsoft.Network/virtualNetworks@2019-04-01' = {
   name: virtualNetworks_asr_vnet_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
     resourceGuid: '9bbe40d0-a95d-4acf-a004-38e4e80f02a6'
@@ -455,7 +456,7 @@ resource virtualNetworks_asr_vnet_name_resource 'Microsoft.Network/virtualNetwor
 
 resource storageAccounts_asrcache_name_resource 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: storageAccounts_asrcache_name
-  location: 'westus2'
+  location: primaryLocation
   sku: {
     name: 'Standard_LRS'
     tier: 'Standard'
@@ -485,7 +486,7 @@ resource storageAccounts_asrcache_name_resource 'Microsoft.Storage/storageAccoun
 
 resource virtualMachines_hr_records_name_resource 'Microsoft.Compute/virtualMachines@2019-03-01' = {
   name: virtualMachines_hr_records_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_B1s'
@@ -532,7 +533,7 @@ resource virtualMachines_hr_records_name_resource 'Microsoft.Compute/virtualMach
 
 resource virtualMachines_patient_records_name_resource 'Microsoft.Compute/virtualMachines@2019-03-01' = {
   name: virtualMachines_patient_records_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_B1s'
@@ -722,7 +723,7 @@ resource storageAccounts_asrcache_name_default 'Microsoft.Storage/storageAccount
 
 resource networkInterfaces_hr_records71_name_resource 'Microsoft.Network/networkInterfaces@2019-04-01' = {
   name: networkInterfaces_hr_records71_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
     resourceGuid: 'd69b2e18-3038-4e3a-adcc-2721ff16bb01'
@@ -763,7 +764,7 @@ resource networkInterfaces_hr_records71_name_resource 'Microsoft.Network/network
 
 resource networkInterfaces_patient_records71_name_resource 'Microsoft.Network/networkInterfaces@2019-04-01' = {
   name: networkInterfaces_patient_records71_name
-  location: 'westus2'
+  location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
     resourceGuid: '6b93712e-d8bc-46ad-8c22-eb9c8b24f6a5'
