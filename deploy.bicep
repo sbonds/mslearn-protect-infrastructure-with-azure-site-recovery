@@ -17,14 +17,10 @@ resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/n
   name: networkSecurityGroups_hr_records_nsg_name
   location: primaryLocation
   properties: {
-    provisioningState: 'Succeeded'
-    resourceGuid: 'b3239779-e967-4d87-88f1-65b4e6bfa6ba'
     securityRules: [
       {
         name: 'HTTP'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '80'
@@ -41,9 +37,7 @@ resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/n
       }
       {
         name: 'HTTPS'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '443'
@@ -60,9 +54,7 @@ resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/n
       }
       {
         name: 'SSH'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
         properties: {
-          provisioningState: 'Succeeded'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '22'
@@ -78,128 +70,6 @@ resource networkSecurityGroups_hr_records_nsg_name_resource 'Microsoft.Network/n
         }
       }
     ]
-    defaultSecurityRules: [
-      {
-        name: 'AllowVnetInBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow inbound traffic from all VMs in VNET'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'VirtualNetwork'
-          destinationAddressPrefix: 'VirtualNetwork'
-          access: 'Allow'
-          priority: 65000
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowAzureLoadBalancerInBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow inbound traffic from azure load balancer'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'AzureLoadBalancer'
-          destinationAddressPrefix: '*'
-          access: 'Allow'
-          priority: 65001
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'DenyAllInBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Deny all inbound traffic'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 65500
-          direction: 'Inbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowVnetOutBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow outbound traffic from all VMs to all VMs in VNET'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: 'VirtualNetwork'
-          destinationAddressPrefix: 'VirtualNetwork'
-          access: 'Allow'
-          priority: 65000
-          direction: 'Outbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'AllowInternetOutBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Allow outbound traffic from all VMs to Internet'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: 'Internet'
-          access: 'Allow'
-          priority: 65001
-          direction: 'Outbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-      {
-        name: 'DenyAllOutBound'
-        etag: 'W/"beb98b61-d8c1-49be-826a-4e02a7a59146"'
-        properties: {
-          provisioningState: 'Succeeded'
-          description: 'Deny all outbound traffic'
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 65500
-          direction: 'Outbound'
-          sourcePortRanges: []
-          destinationPortRanges: []
-          sourceAddressPrefixes: []
-          destinationAddressPrefixes: []
-        }
-      }
-    ]
   }
 }
 
@@ -208,11 +78,9 @@ resource networkSecurityGroups_patient_records_nsg_name_resource 'Microsoft.Netw
   location: primaryLocation
   properties: {
     provisioningState: 'Succeeded'
-    resourceGuid: 'b0223784-0386-4ac2-a236-fbc491eb9d53'
     securityRules: [
       {
         name: 'HTTP'
-        etag: 'W/"efc2e53a-69fe-4c7c-a82c-52ac032a2e76"'
         properties: {
           provisioningState: 'Succeeded'
           protocol: 'Tcp'
