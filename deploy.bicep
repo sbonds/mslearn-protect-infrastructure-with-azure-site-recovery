@@ -1,3 +1,8 @@
+// Example use:
+// az group create --name east-coast-rg --location eastus2
+// az group create --name west-coast-rg --location westus2
+// az deployment group what-if --name asrViaBicep --template-file .\deploy.bicep --resource-group west-coast-rg
+// az deployment group create --name asrViaBicep --template-file .\deploy.bicep --resource-group west-coast-rg
 param virtualMachines_hr_records_name string = 'hr-records'
 param networkInterfaces_hr_records71_name string = 'hr-records71'
 param virtualMachines_patient_records_name string = 'patient-records'
@@ -7,7 +12,7 @@ param networkInterfaces_patient_records71_name string = 'patient-records71'
 param networkSecurityGroups_hr_records_nsg_name string = 'hr-records-nsg'
 param publicIPAddresses_patient_records_ip_name string = 'patient-records-ip'
 param networkSecurityGroups_patient_records_nsg_name string = 'patient-records-nsg'
-param storageAccounts_asrcache_name string = 'asrcache-${uniqueString(resourceGroup().id)}'
+param storageAccounts_asrcache_name string = 'asrcache${uniqueString(resourceGroup().id)}'
 param primaryLocation string = 'westus2'
 // Security? Who needs that? A more secure and higher-effort approach would be to create a key vault and autogenerate
 // a password, then put the password in the key vault.
