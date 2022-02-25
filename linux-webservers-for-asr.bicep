@@ -125,7 +125,6 @@ resource vnet_name_resource 'Microsoft.Network/virtualNetworks@2019-04-01' = {
         properties: {
           addressPrefix: '10.1.1.0/24'
           delegations: []
-          networkSecurityGroup: nsg_name_resource
         }
       }
     ]
@@ -252,12 +251,15 @@ resource webserver02_name_resource 'Microsoft.Compute/virtualMachines@2019-03-01
   }
 }
 
-resource vnet_name_default 'Microsoft.Network/virtualNetworks/subnets@2019-04-01' = {
+resource subnet_name_default 'Microsoft.Network/virtualNetworks/subnets@2019-04-01' = {
   parent: vnet_name_resource
   name: 'default'
   properties: {
     addressPrefix: '10.1.1.0/24'
     delegations: []
+    networkSecurityGroup: {
+      id: nsg_name_resource.id
+    }
   }
 }
 
@@ -287,7 +289,7 @@ resource webserver01_NIC_name_resource 'Microsoft.Network/networkInterfaces@2019
             id: publicIP_webserver01_name_resource.id
           }
           subnet: {
-            id: vnet_name_default.id
+            id: subnet_name_default.id
           }
           primary: true
           privateIPAddressVersion: 'IPv4'
@@ -319,7 +321,7 @@ resource webserver02_NIC_name_resource 'Microsoft.Network/networkInterfaces@2019
             id: publicIP_webserver02_name_resource.id
           }
           subnet: {
-            id: vnet_name_default.id
+            id: subnet_name_default.id
           }
           primary: true
           privateIPAddressVersion: 'IPv4'
