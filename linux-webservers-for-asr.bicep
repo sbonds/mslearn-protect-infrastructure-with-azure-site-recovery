@@ -170,7 +170,7 @@ resource storageAccounts_diag_name_resource 'Microsoft.Storage/storageAccounts@2
   sku: {
     name: 'Standard_LRS'
   }
-  kind: 'Storage'
+  kind: 'StorageV2'
   properties: {
     networkAcls: {
       bypass: 'AzureServices'
